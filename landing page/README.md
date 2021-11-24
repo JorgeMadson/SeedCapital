@@ -1,4 +1,4 @@
-# Landing page concept for Cryptocurrency company
+# Landing page concept for SeedCapital
 
 ## ***\* This landing page is for educational purposes only \*\***
 
