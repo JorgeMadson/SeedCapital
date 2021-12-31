@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.7+commit.e28d00a7"
+		"version": "0.8.11+commit.d7f03943"
 	},
 	"language": "Solidity",
 	"output": {
@@ -59,19 +59,6 @@
 				],
 				"name": "Transfer",
 				"type": "event"
-			},
-			{
-				"inputs": [],
-				"name": "admin",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
 			},
 			{
 				"inputs": [
@@ -178,6 +165,32 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "devFund",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "foundersFund",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -203,19 +216,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "initialSupply",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "name",
 				"outputs": [
 					{
@@ -235,6 +235,19 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "timelock",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -368,44 +381,20 @@
 		"remappings": []
 	},
 	"sources": {
-		".deps/npm/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-			"keccak256": "0xb03df8481a954604ad0c9125680893b2e3f7ff770fe470e38b89ac61b84e8072",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://b34655953d18ba3a45b762fb6bdbb6549af69a27435e10ece178742bf70baf45",
-				"dweb:/ipfs/QmcqjUoFLLMyx7dbwSHUnDBH6aphkVHXWQvQRRev5EAWEh"
-			]
-		},
-		".deps/npm/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-			"keccak256": "0x027b891937d20ccf213fdb9c31531574256de774bda99d3a70ecef6e1913ed2a",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://087318b21c528119f649899f5b5580566dd8d7b0303d4904bd0e8580c3545f14",
-				"dweb:/ipfs/Qmbn5Mj7aUn8hJuQ8VrQjjEXRsXyJKykgnjR9p4C3nfLtL"
-			]
-		},
-		".deps/npm/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-			"keccak256": "0x83fe24f5c04a56091e50f4a345ff504c8bff658a76d4c43b16878c8f940c53b2",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://d4c3df1a7ca104b633a7d81c6c6f5192367d150cd5a32cba81f7f27012729013",
-				"dweb:/ipfs/QmSim72e3ZVsfgZt8UceCvbiSuMRHR6WDsiamqNzZahGSY"
-			]
-		},
-		".deps/npm/@openzeppelin/contracts/utils/Context.sol": {
-			"keccak256": "0x90565a39ae45c80f0468dc96c7b20d0afc3055f344c8203a0c9258239f350b9f",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://26e8b38a7ac8e7b4463af00cf7fff1bf48ae9875765bf4f7751e100124d0bc8c",
-				"dweb:/ipfs/QmWcsmkVr24xmmjfnBQZoemFniXjj3vwT78Cz6uqZW1Hux"
-			]
-		},
 		"contracts/SeedCapital.sol": {
-			"keccak256": "0xa43e1da0084d26e50218f3a073d0eeb8bfe1693e9769c9baa7b383d350765872",
+			"keccak256": "0x0361905c451196aec78077bb829f42ce34c3d8e66f351372369ea07a2c58f446",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ea8cb76f296da2f688680de05d75b6fef9164d481eacd08b3922c0e24fa583d7",
-				"dweb:/ipfs/QmTnQQMp7JaNwqkWSjRhzYJhVtocHztWdYWkniQxfUZkH7"
+				"bzz-raw://8ac19336c60ad89aa41437825307a6389f8b5233af1ae110d3aac20e443fc2b8",
+				"dweb:/ipfs/QmXGQNSniaXtKdxzhcSp9nxqFahJGNfnKi7JfHNFucTktS"
+			]
+		},
+		"contracts/lib.sol": {
+			"keccak256": "0x11d8e78550c7c13a9b0b6a55b58b0c76c08dc5655d87aad9370e9142ee284b0d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0d6ed38d1a60fc4bf3d8254a98049eed8c9b4d2b2bb4a4ffc1117ac29a92c04b",
+				"dweb:/ipfs/QmSjd1N4i86JgWTMA746VoaYRnRrfEcRinfftbwszwJ4Ao"
 			]
 		}
 	},
