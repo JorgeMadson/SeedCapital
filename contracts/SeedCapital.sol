@@ -2,44 +2,43 @@
 pragma solidity ^0.8.0;
 
 // import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "../.deps/npm/@openzeppelin/contracts/token/ERC20/ERC20.sol";
+//import "../.deps/npm/@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "./ERC20.sol";
 
 contract SeedCapital is ERC20 {
 
     //Initial token is 1.1 billions
     uint256 public initialSupply = 1100000000 * 10**decimals();
-    mapping(address => uint256) private balances;
+    address public admin = address(0x123);
 
     constructor() ERC20("SeedCapital", "SCFT") {
         _mint(msg.sender, initialSupply);
     }
 
     function decimals() public view virtual override returns (uint8) {
-        return 4;
+        return 4; // why 4?
     }
 
-    // 5% to the dev account
-    address admin = address(0x123);
+    function _transfer(address sender, address recipient, uint256 amount) internal virtual override {
+        require(sender != address(0), "ERC20: transfer from the zero address");
+        require(recipient != address(0), "ERC20: transfer to the zero address");
 
-    function transfer(address _to, uint256 _amount)
-        public
-        override
-        returns (bool)
-    {
-        uint256 fee = (_amount / 100) * 5; // Calculate 5% fee
+        _beforeTokenTransfer(sender, recipient, amount);
 
-        balances[msg.sender] -= _amount; // subtract the full amount
-        if (balances[msg.sender] > _amount + fee) {
-            transactionFee(fee);
-            balances[_to] += (_amount); // add the remainder to the recipient balance
-            return true;
-        } else return false;
-    }
+        uint256 senderBalance = _balances[sender];
+        require(senderBalance >= amount, "ERC20: transfer amount exceeds balance");
+        unchecked {
+            _balances[sender] = senderBalance - amount;
+        }
 
-    function transactionFee(uint256 _fee_amount) internal returns (bool) {
-        //send to admin wallet
-        balances[msg.sender] -= _fee_amount; // subtract the fee
-        balances[admin] += _fee_amount; // add the fee to the admin balance
-        return true;
+        uint256 fee = (amount / 100) * 5; // Calculate 5% fee
+        uint256 newAmount = amount - fee;
+
+        _balances[admin] += fee;
+        _balances[recipient] += newAmount;
+
+        emit Transfer(sender, recipient, amount);
+
+        _afterTokenTransfer(sender, recipient, amount);
     }
 }

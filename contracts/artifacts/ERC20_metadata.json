@@ -6,7 +6,18 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name_",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol_",
+						"type": "string"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -59,19 +70,6 @@
 				],
 				"name": "Transfer",
 				"type": "event"
-			},
-			{
-				"inputs": [],
-				"name": "admin",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
 			},
 			{
 				"inputs": [
@@ -203,19 +201,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "initialSupply",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "name",
 				"outputs": [
 					{
@@ -308,6 +293,7 @@
 			}
 		],
 		"devdoc": {
+			"details": "Implementation of the {IERC20} interface. Based on OpenZeppelin's ERC20 implementation, with changes to fit our functionality needs.",
 			"kind": "dev",
 			"methods": {
 				"allowance(address,address)": {
@@ -318,6 +304,9 @@
 				},
 				"balanceOf(address)": {
 					"details": "See {IERC20-balanceOf}."
+				},
+				"constructor": {
+					"details": "Sets the values for {name} and {symbol}. The default value of {decimals} is 18. To select a different value for {decimals} you should overload it. All two of these values are immutable: they can only be set once during construction."
 				},
 				"decimals()": {
 					"details": "Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5.05` (`505 / 10 ** 2`). Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei. This is the value {ERC20} uses, unless this function is overridden; NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}."
@@ -354,7 +343,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/SeedCapital.sol": "SeedCapital"
+			"contracts/ERC20.sol": "ERC20"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -398,14 +387,6 @@
 			"urls": [
 				"bzz-raw://04c8271a12a9c0d2f7d744dcc58245f261fa31ee5dfee54fcc67519d83f70716",
 				"dweb:/ipfs/QmYoWefJ8VDwVgZNiTR56NSHv4jPEJa3nyERdCoh9vN8Ax"
-			]
-		},
-		"contracts/SeedCapital.sol": {
-			"keccak256": "0xffcc5f7d706486a32151a71eac92fdf7e8ecb0eebb0cbcd9d9af58a609d0d8dc",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://3ebb5255919a11b89b748f35284e84059aba1c21be1111f1ec70a2e15288f0db",
-				"dweb:/ipfs/QmVaP7w7AXg2UNHUJK224HJSr89LvNniCe49ngKtTn1JMx"
 			]
 		}
 	},
